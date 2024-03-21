@@ -253,13 +253,104 @@ body {
     height: 223px;
     border-radius: 30px;
 }
-.players-lists .players-list_hold .player-card p {
+.players-lists .players-list_hold .player-card .player-card_profilehold p {
     font-size: 30px;
     font-weight: 900;
     margin-left: 20px;
     margin-top: 20px;
 }
+.players-lists .players-list_hold .player-card .player-card_profilehold a {
+    text-decoration: none;
+    color: white;
+}
+.players-lists .players-list_hold .player-card .player-card_profilehold p:last-child {
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color .3s;
+}
+.players-lists .players-list_hold .player-card .player-card_profilehold p:last-child:hover {
+    color: rgb(255, 108, 108);
+}
 /* End of Players page */
+
+/* Player page */
+.htcover {
+    width: 100%;
+    height: 500px;
+    background-color: red;
+    background-position: center;
+    background-size: cover;
+}
+.htprofile-hold {
+    position: relative;
+    bottom: 130px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.htprofile-hold .htprofile-description {
+    max-width: 1200px;
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 30px;
+    border-radius: 30px;
+    margin-top: 50px;
+}
+.htprofile-hold .htprofile-description h1 {
+    font-size: 40px;
+    font-weight: 900;
+}
+.htprofile-hold .htprofile-description p {
+    font-size: 24px;
+    font-weight: normal;
+}
+.htprofile-hold .htprofile {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-block: 20px;
+    padding-inline: 50px;
+    border-radius: 30px;
+    backdrop-filter: blur(24px);
+}
+.htprofile-hold .htprofile .htprofile-img {
+    max-width: 223px;
+    width: 100%;
+    border-radius: 30px;
+    position: relative;
+    bottom: 60px;
+}
+.htprofile-hold .htprofile .htprofile-maindata {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.htprofile-hold .htprofile .htprofile-maindata h1 {
+
+}
+.htprofile-hold .htprofile .htprofile-maindata .htprofile-maindata__links {
+    display: flex;
+}
+
+.htprofile-hold .htprofile .htprofile-maindata .htprofile-maindata__links a .ntlink-to {
+    background-color: #fff;
+    display: flex;
+    border-radius: 5px;
+}
+.htprofile-hold .htprofile .htprofile-maindata .htprofile-maindata__links a:not(:first-child) {
+    margin-left: 10px;
+}
+.htprofile-hold .htprofile .htprofile-maindata .htprofile-maindata__links a .ntlink-to .htlink {
+    width: 30px;
+}
+/* end of Player page */
 #copyrigth {
     z-index: 9999;
     position: fixed;
@@ -289,6 +380,15 @@ body {
     }
     #copyrigth {
         font-size: 10px;
+    }
+    .htprofile-hold .htprofile {
+        flex-direction: column;
+        align-items: center;
+    }
+    .htprofile-hold .htprofile .htprofile-maindata {
+        margin-left: 0;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
