@@ -332,9 +332,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-.htprofile-hold .htprofile .htprofile-maindata h1 {
 
-}
 .htprofile-hold .htprofile .htprofile-maindata .htprofile-maindata__links {
     display: flex;
 }
@@ -397,10 +395,21 @@ body {
 }
 #copyrigth a{
     text-decoration: none;
-    color: white;
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+#copyrigth p:first-child a {
+    color: red;
+}
+#copyrigth a {
+    color: white;
+}
+#copyrigth p:first-child a:before {
+    content: "(?)";
+    margin-right: 5px;
+    font-size: 15px;
 }
 
 @media (max-width: 600px) {
