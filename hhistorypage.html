@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
+    <title>История</title>
     <link rel="stylesheet" href="./styles/htglobal.css">
 </head>
 <body>
@@ -75,11 +75,83 @@
                 <img src="./images/hthistory/tNxs0GEXSHQ.jpg" alt="">
 
             <footer style="width: 100%; height: 50px;"></footer>
+            </div>
         </div>
-    </main> 
+    </main>
     <div id="copyrigth">
         <p><a href="https://ngoldprojects.github.io/about/hteam.html">INFO</a></p>
         <p><a href="https://thefunnyday.github.io">redesign by thefunnyday 2024 / original site by thefunnyday 2018</a></p>
-</div>
+    </div>
+    <div id="image-viewer" aria-hidden="true">
+        <button class="viewer-button close" type="button" title="Закрыть">×</button>
+        <button class="viewer-button prev" type="button" title="Предыдущая">‹</button>
+        <button class="viewer-button next" type="button" title="Следующая">›</button>
+        <img src="" alt="Историческое изображение">
+        <div class="viewer-caption"></div>
+    </div>
+    <script>
+        (function() {
+            const images = Array.from(document.querySelectorAll('#hthistory-imagecon img'));
+            const viewer = document.getElementById('image-viewer');
+            const viewerImage = viewer.querySelector('img');
+            const caption = viewer.querySelector('.viewer-caption');
+            const btnClose = viewer.querySelector('.viewer-button.close');
+            const btnPrev = viewer.querySelector('.viewer-button.prev');
+            const btnNext = viewer.querySelector('.viewer-button.next');
+            let currentIndex = 0;
+            function show(index) {
+                currentIndex = (index + images.length) % images.length;
+                const img = images[currentIndex];
+                viewerImage.src = img.src;
+                viewerImage.alt = img.alt || 'Изображение';
+                caption.textContent = 'Изображение ' + (currentIndex + 1) + ' из ' + images.length;
+                viewer.classList.add('visible');
+                viewer.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+            function hide() {
+                viewer.classList.remove('visible');
+                viewer.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+            function next() {
+                show(currentIndex + 1);
+            }
+            function prev() {
+                show(currentIndex - 1);
+            }
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => show(index));
+            });
+            btnClose.addEventListener('click', hide);
+            btnPrev.addEventListener('click', function(event) {
+                event.stopPropagation();
+                prev();
+            });
+            btnNext.addEventListener('click', function(event) {
+                event.stopPropagation();
+                next();
+            });
+            viewer.addEventListener('click', function(event) {
+                if (event.target === viewer) {
+                    hide();
+                }
+            });
+            document.addEventListener('keydown', function(event) {
+                if (!viewer.classList.contains('visible')) {
+                    return;
+                }
+                if (event.key === 'Escape') {
+                    hide();
+                }
+                if (event.key === 'ArrowRight') {
+                    next();
+                }
+                if (event.key === 'ArrowLeft') {
+                    prev();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

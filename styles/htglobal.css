@@ -56,7 +56,7 @@ body {
             rgba(0, 0, 0, 0.3), 
             rgba(0, 0, 0, 0.3)
         ),
-    url('../images/OPjfa2A.png');
+    url('../images/OPmnAa.jpg');
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
@@ -365,6 +365,7 @@ body {
     text-align: center;
 }
 #hthistory #hthistory-imagecon {
+    cursor: pointer;
     display: flex;
     max-width: 1000px;
     width: 100%;
@@ -376,9 +377,81 @@ body {
     width: 100%;
     border-radius: 10px;
     border: 1px solid rgb(68, 68, 68);
+    transition: border-color .3s;
+}
+#hthistory #hthistory-imagecon img:hover {
+    border-color: rgb(255, 69, 69);
 }
 #hthistory #hthistory-imagecon img:last-child {
     margin-bottom: 25px;
+}
+#image-viewer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .94);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    padding: 20px;
+}
+
+#image-viewer.visible {
+    display: flex;
+}
+
+#image-viewer img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, .6);
+}
+
+.viewer-button {
+    position: absolute;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    border: none;
+    padding: 14px 19px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background .2s ease;
+    pointer-events: auto;
+    line-height: 1;
+}
+
+.viewer-button:hover {
+    background: rgba(255, 255, 255, .15);
+}
+
+.viewer-button.close {
+    top: 18px;
+    right: 18px;
+}
+
+.viewer-button.prev {
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.viewer-button.next {
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.viewer-caption {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 14px;
+    opacity: .8;
+    text-align: center;
+    max-width: 90vw;
 }
 /* end of History page */
 #copyrigth {
